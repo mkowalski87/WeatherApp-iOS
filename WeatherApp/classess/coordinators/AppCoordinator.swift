@@ -28,38 +28,10 @@ final class AppCoordinator: CoordinatorProtocol {
     
     // MARK: - Public methods
     func showMainView() {
-        let mainViewController = MainViewController()
-        let vc1 = ListViewController()
-        let vc2 = FavouritesViewController()
-        mainViewController.viewControllers = [vc1,vc2]
-        let navViewController = UINavigationController(rootViewController: mainViewController)
+        let navViewController = UINavigationController(rootViewController: SearchLocationViewController())
         window.rootViewController = navViewController
     }
-//
-//    func showProjectDetails(project: Project) {
-//        guard let projectDetailsViewController = ProjectDetailsViewController.loadFromStoryboard(),
-//            let navVC = window.rootViewController as? UINavigationController else {
-//                return
-//        }
-//
-//        let projectDetailsViewModel = ProjectDetailsViewModel(project: project)
-//        projectDetailsViewModel.coordinatorDelegate = self
-//        projectDetailsViewController.viewModel = projectDetailsViewModel
-//
-//        navVC.pushViewController(projectDetailsViewController, animated: true)
-//    }
-//
-//    func showDocuments(for project: Project) {
-//        guard let navVC = window.rootViewController as? UINavigationController else {
-//            return
-//        }
-//
-//        documentsCoordinator = DocumentsCoordinator(baseViewController: navVC, project: project)
-//        documentsCoordinator?.parentCoordinator = self
-//        documentsCoordinator?.start()
-//
-//    }
-    
+
     func start() {
         showMainView()
     }

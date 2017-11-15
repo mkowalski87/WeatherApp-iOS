@@ -22,5 +22,5 @@ extension Location {
     @NSManaged public var lon: Double
     @NSManaged public var title: String
     @NSManaged public var type: String
-
+    @NSManaged public var favourite: Bool
 }

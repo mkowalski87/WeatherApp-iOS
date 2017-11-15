@@ -29,8 +29,7 @@ class CoordinatorTests: XCTestCase {
     func testShowMainVC() {
         let appCoord = AppCoordinator(window: window)
         appCoord.start()
-        let mainVC = appCoord.topViewController as? MainViewController
+        let mainVC = appCoord.topViewController as? SearchLocationViewController
         XCTAssertNotNil(mainVC)
-        XCTAssertEqual(mainVC?.viewControllers?.count, 2)
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B48" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Location" representedClassName=".Location" syncable="YES">
+        <attribute name="favourite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lat" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="locationId" attributeType="Integer 32" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lon" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -13,6 +14,6 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Location" positionX="-8802" positionY="-1332" width="128" height="118"/>
+        <element name="Location" positionX="-8802" positionY="-1332" width="128" height="135"/>
     </elements>
 </model>
