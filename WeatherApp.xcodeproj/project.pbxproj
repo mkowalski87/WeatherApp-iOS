@@ -26,6 +26,8 @@
 		9008E7AC1FBB75D600884554 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9008E7AB1FBB75D600884554 /* CoreDataHelper.swift */; };
 		9008E7AE1FBB7C1200884554 /* LocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9008E7AD1FBB7C1100884554 /* LocationTests.swift */; };
 		9008E7B01FBB86B600884554 /* LocationDAOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9008E7AF1FBB86B600884554 /* LocationDAOTests.swift */; };
+		902C85501FBE2E5F00AF5FCC /* WeatherDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C854F1FBE2E5F00AF5FCC /* WeatherDTOTests.swift */; };
+		902C85521FBE338900AF5FCC /* ParserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C85511FBE338900AF5FCC /* ParserProtocol.swift */; };
 		906BC8AA1FBE109C00C823C6 /* WeatherDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BC8A91FBE109C00C823C6 /* WeatherDTO.swift */; };
 		906BC8AC1FBE10B600C823C6 /* LocationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BC8AB1FBE10B600C823C6 /* LocationDTO.swift */; };
 		906BC8B31FBE134A00C823C6 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BC8AF1FBE134A00C823C6 /* Weather.swift */; };
@@ -78,6 +80,8 @@
 		9008E7AB1FBB75D600884554 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		9008E7AD1FBB7C1100884554 /* LocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTests.swift; sourceTree = "<group>"; };
 		9008E7AF1FBB86B600884554 /* LocationDAOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDAOTests.swift; sourceTree = "<group>"; };
+		902C854F1FBE2E5F00AF5FCC /* WeatherDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDTOTests.swift; sourceTree = "<group>"; };
+		902C85511FBE338900AF5FCC /* ParserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserProtocol.swift; sourceTree = "<group>"; };
 		906BC8A91FBE109C00C823C6 /* WeatherDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDTO.swift; sourceTree = "<group>"; };
 		906BC8AB1FBE10B600C823C6 /* LocationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDTO.swift; sourceTree = "<group>"; };
 		906BC8AF1FBE134A00C823C6 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 				9008E7AF1FBB86B600884554 /* LocationDAOTests.swift */,
 				908B69E31FBCD02C002E98A7 /* NetworkingTests.swift */,
 				908B69EF1FBCE3F2002E98A7 /* LocationListViewModelTests.swift */,
+				902C854F1FBE2E5F00AF5FCC /* WeatherDTOTests.swift */,
 				9008E77C1FBB5DC400884554 /* Info.plist */,
 			);
 			path = WeatherAppTests;
@@ -200,6 +205,7 @@
 				908B69E51FBCD2A1002E98A7 /* APIResponse.swift */,
 				908B69E11FBCCCC2002E98A7 /* APIRequest.swift */,
 				908B69E71FBCD5D2002E98A7 /* APIManager.swift */,
+				902C85511FBE338900AF5FCC /* ParserProtocol.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -347,6 +353,7 @@
 				906BC8BA1FBE15AE00C823C6 /* SearchLocationViewModelProtocol.swift in Sources */,
 				908B69E01FBCCB6D002E98A7 /* APIClient.swift in Sources */,
 				906BC8AC1FBE10B600C823C6 /* LocationDTO.swift in Sources */,
+				902C85521FBE338900AF5FCC /* ParserProtocol.swift in Sources */,
 				9008E78D1FBB615400884554 /* FavouritesViewController.swift in Sources */,
 				906BC8BC1FBE15E000C823C6 /* SearchLocationViewModel.swift in Sources */,
 				908B69EA1FBCDB3F002E98A7 /* LocationListViewController.swift in Sources */,
@@ -369,6 +376,7 @@
 			files = (
 				908B69F01FBCE3F2002E98A7 /* LocationListViewModelTests.swift in Sources */,
 				9008E7961FBB677F00884554 /* CoordinatorTests.swift in Sources */,
+				902C85501FBE2E5F00AF5FCC /* WeatherDTOTests.swift in Sources */,
 				9008E7B01FBB86B600884554 /* LocationDAOTests.swift in Sources */,
 				9008E7AE1FBB7C1200884554 /* LocationTests.swift in Sources */,
 				908B69E41FBCD02C002E98A7 /* NetworkingTests.swift in Sources */,

@@ -53,6 +53,8 @@ class NetworkingTests: XCTestCase {
         apiManager.getCurrentWeather(for: 44418) { (weather, error) -> (Void) in
             XCTAssertNil(error)
             XCTAssertNotNil(weather)
+            XCTAssertTrue(weather!.count > 0)
+            callExpectation.fulfill()
         }
         
         wait(for: [callExpectation], timeout: 5.0)

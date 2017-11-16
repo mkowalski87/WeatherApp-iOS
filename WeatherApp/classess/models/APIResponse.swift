@@ -10,6 +10,7 @@ import Foundation
 
 enum APIError: Error {
     case UnexpectedStatusReceived
+    case ParsingResponseError
 }
 
 public enum DataResponse {

@@ -26,7 +26,7 @@ import Foundation
 //    "predictability": 71
 //},
 
-struct WeatherDTO: Codable {
+struct WeatherDTO: Codable, ParserProtocol {
     let id: Int64
     let weather_state_name: String
     let created: String

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct LocationDTO: Codable {
+struct LocationDTO: Codable, ParserProtocol {
     let title: String
     let location_type: String
     let woeid: Int32
@@ -20,16 +20,6 @@ struct LocationDTO: Codable {
     
     var latitude: Double {
         return Double(latt_long.components(separatedBy: ",").first?.trimmingCharacters(in: .whitespaces) ?? "0.0") ?? 0.0
-    }
-    
-    static func parseObject(data: Data) -> LocationDTO? {
-        let decoder = JSONDecoder()
-        return try? decoder.decode(LocationDTO.self, from: data)
-    }
-    
-    static func parseArray(data: Data) -> [LocationDTO]? {
-        let decoder = JSONDecoder()
-        return try? decoder.decode([LocationDTO].self, from: data)
     }
     
 }

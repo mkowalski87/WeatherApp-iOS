@@ -1,3 +1,4 @@
+
 //
 //  APIManager.swift
 //  WeatherApp
@@ -7,6 +8,10 @@
 //
 
 import Foundation
+
+struct GetWeatherResponse: Codable, ParserProtocol {
+    let consolidated_weather: [WeatherDTO]
+}
 
 class APIManager {
     
@@ -28,7 +33,7 @@ class APIManager {
         }
     }
 
-    func getCurrentWeather(for locationId: Int32, completion:(([Weather]?, Error?)->(Void))?) {
+    func getCurrentWeather(for locationId: Int32, completion:(([WeatherDTO]?, Error?)->(Void))?) {
         let request = APIRequest(endpoint: APIEndpoint.getWeather(locationId: locationId))
         
         _ = apiClient.data(request) { (response) in
@@ -38,9 +43,14 @@ class APIManager {
                     completion?(nil, error)
                 }
             case .success(let data):
-                debugPrint(String(data: data, encoding: .utf8)!)
+                guard let responseObject = GetWeatherResponse.parseObject(data: data) else {
+                    DispatchQueue.main.async {
+                        completion?(nil, APIError.ParsingResponseError)
+                    }
+                    return
+                }
                 DispatchQueue.main.async {
-                    completion?(nil, nil)
+                    completion?(responseObject.consolidated_weather, nil)
                 }
             }
         }
