@@ -7,7 +7,7 @@
         <attribute name="lon" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
         <attribute name="type" attributeType="String" syncable="YES"/>
-        <relationship name="weatherEntries" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Weather" inverseName="location" inverseEntity="Weather" syncable="YES"/>
+        <relationship name="weatherEntries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Weather" inverseName="location" inverseEntity="Weather" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="locationId"/>

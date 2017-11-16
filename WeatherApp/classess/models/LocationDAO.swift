@@ -11,6 +11,13 @@ import CoreData
 
 class LocationDAO: LocationDAOProtocol {
     
+    func get(locationId: Int32, context: NSManagedObjectContext) -> Location? {
+        let request: NSFetchRequest<Location> = Location.fetchRequest()
+        request.fetchLimit = 1
+        request.predicate = NSPredicate(format: "locationId == %d", locationId)
+        return (try? context.fetch(request))?.first
+    }
+    
     func all(context: NSManagedObjectContext) -> [Location]? {
         do {
             let request: NSFetchRequest<Location> = Location.fetchRequest()
@@ -31,19 +38,11 @@ class LocationDAO: LocationDAOProtocol {
     
     
     func addOrUpdate(locationDTO: LocationDTO, context: NSManagedObjectContext) {
-        let request: NSFetchRequest<Location> = Location.fetchRequest()
-        request.fetchLimit = 1
-        request.predicate = NSPredicate(format: "locationId == %d", locationDTO.woeid)
-        do {
-            if let location = try context.fetch(request).first {
-                location.copyValues(from: locationDTO)
-                try? context.save()
-            } else {
-                _ = add(location: locationDTO, context: context)
-            }
-        } catch let e {
-            debugPrint(e)
+        if let location = self.get(locationId: locationDTO.woeid, context: context) {
+            location.copyValues(from: locationDTO)
+            try? context.save()
+        } else {
+            _ = add(location: locationDTO, context: context)
         }
-
     }
 }

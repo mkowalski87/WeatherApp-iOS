@@ -17,7 +17,8 @@ class SearchLocationViewModel: SearchLocationViewModelProtocol {
     
     var viewDelegate: SearchLocationViewDelegate?
     var locationDAO: LocationDAOProtocol = LocationDAO()
-    
+    var weatherDAO: WeatherDAOProtocol = WeatherDAO()
+    var apiManager: APIManager = APIManager()
     var locations: [Location] = []
     
     var numberOfLocations: Int {
@@ -26,7 +27,12 @@ class SearchLocationViewModel: SearchLocationViewModelProtocol {
 
     func get(index: Int) -> SearchLocationModel {
         let loc = locations[index]
-        return SearchLocationModel(title: loc.title, temp: "---")
+        var temp: String = "---"
+        if let weather = loc.weatherEntries?.anyObject() as? Weather {
+            temp = String(Int(weather.maxTemp))
+        }
+
+        return SearchLocationModel(title: loc.title, temp: temp)
     }
     
     func refresh() {
@@ -40,6 +46,19 @@ class SearchLocationViewModel: SearchLocationViewModelProtocol {
     }
     
     func fetchWeather(for location: LocationDTO) {
-        
+        apiManager.getCurrentWeather(for: location.woeid) { (weatherList, error) -> (Void) in
+            self.saveWeatherList(locationId: location.woeid, weatherList: weatherList!)
+            self.refresh()
+        }
+    }
+    
+    private func saveWeatherList(locationId: Int32, weatherList: [WeatherDTO]) {
+        let context = CoreDataHelper.instance.context
+        if let location = self.locationDAO.get(locationId: locationId, context: context) {
+            weatherList.forEach({
+                self.weatherDAO.add(weatherDTO: $0, context: context).location = location
+            })
+            try? context.save()
+        }
     }
 }

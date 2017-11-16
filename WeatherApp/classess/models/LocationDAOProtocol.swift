@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 protocol LocationDAOProtocol {
+    func get(locationId: Int32, context: NSManagedObjectContext) -> Location?
     func add(location: LocationDTO, context: NSManagedObjectContext) -> Location
     func addOrUpdate(locationDTO: LocationDTO, context: NSManagedObjectContext)
     func all(context: NSManagedObjectContext) -> [Location]?

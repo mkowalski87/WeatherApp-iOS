@@ -23,6 +23,23 @@ extension Location {
     @NSManaged public var lon: Double
     @NSManaged public var title: String
     @NSManaged public var type: String
-    @NSManaged public var weatherEntries: Weather?
+    @NSManaged public var weatherEntries: NSSet?
+
+}
+
+// MARK: Generated accessors for weatherEntries
+extension Location {
+
+    @objc(addWeatherEntriesObject:)
+    @NSManaged public func addToWeatherEntries(_ value: Weather)
+
+    @objc(removeWeatherEntriesObject:)
+    @NSManaged public func removeFromWeatherEntries(_ value: Weather)
+
+    @objc(addWeatherEntries:)
+    @NSManaged public func addToWeatherEntries(_ values: NSSet)
+
+    @objc(removeWeatherEntries:)
+    @NSManaged public func removeFromWeatherEntries(_ values: NSSet)
 
 }
