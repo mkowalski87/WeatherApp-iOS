@@ -26,12 +26,12 @@ class LocationDAOTests: XCTestCase {
     
     func testAdding() {
         var loc = LocationDTO(title: "Krakow", location_type: "City", woeid: 1, latt_long: "22.0, 54.0")
-        _ = locationDAO.add(locationDTO: loc, context: CoreDataHelper.instance.context)
+        _ = locationDAO.add(location: loc, context: CoreDataHelper.instance.context)
         CoreDataHelper.instance.save()
         var locations = locationDAO.all(context: CoreDataHelper.instance.context)
         XCTAssertEqual(locations?.count, 1)
         loc = LocationDTO(title: "Rzeszow", location_type: "City", woeid: 2, latt_long: "22.5, 54.0")
-        _ = locationDAO.add(locationDTO: loc, context: CoreDataHelper.instance.context)
+        _ = locationDAO.add(location: loc, context: CoreDataHelper.instance.context)
         CoreDataHelper.instance.save()
         locations = locationDAO.all(context: CoreDataHelper.instance.context)
         XCTAssertEqual(locations?.count, 2)

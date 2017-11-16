@@ -28,10 +28,18 @@ final class AppCoordinator: CoordinatorProtocol {
     
     // MARK: - Public methods
     func showMainView() {
-        let navViewController = UINavigationController(rootViewController: SearchLocationViewController())
+        let navViewController = UINavigationController(rootViewController: showSearchLocation())
         window.rootViewController = navViewController
     }
 
+    func showSearchLocation() -> UIViewController {
+        let searchLocVC = SearchLocationViewController()
+        let viewModel = SearchLocationViewModel()
+        viewModel.viewDelegate = searchLocVC
+        searchLocVC.viewModel = viewModel
+        return searchLocVC
+    }
+    
     func start() {
         showMainView()
     }

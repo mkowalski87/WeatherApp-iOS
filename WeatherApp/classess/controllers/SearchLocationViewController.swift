@@ -14,6 +14,7 @@ class SearchLocationViewController: UIViewController, UITableViewDelegate, UITab
     var searchController: UISearchController!
     var locationListVC = LocationListViewController()
     var apiManager = APIManager()
+    var viewModel: SearchLocationViewModelProtocol?
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -57,12 +58,14 @@ class SearchLocationViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return viewModel?.numberOfLocations ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") {
-            cell.textLabel?.text = "aaaa"
+            if let model = viewModel?.get(index: indexPath.row) {
+                cell.textLabel?.text = "\(model.title) \(model.temp)"
+            }
             return cell
         }
         return UITableViewCell()
@@ -87,6 +90,15 @@ class SearchLocationViewController: UIViewController, UITableViewDelegate, UITab
 extension SearchLocationViewController: LocationListViewModelCoordinatorDelegate {
     func didSelectLocation(location: LocationDTO, sender: LocationListViewModelProtocol) {
         searchController.dismiss(animated: true, completion: nil)
-        //store selected location
+        viewModel?.addLocation(location: location)
+        viewModel?.fetchWeather(for: location)
     }
+}
+
+extension SearchLocationViewController: SearchLocationViewDelegate {
+    
+    func update(sender: SearchLocationViewModelProtocol) {
+        tableView.reloadData()
+    }
+    
 }

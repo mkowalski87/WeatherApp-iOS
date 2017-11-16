@@ -27,4 +27,23 @@ class APIManager {
             }
         }
     }
+
+    func getCurrentWeather(for locationId: Int32, completion:(([Weather]?, Error?)->(Void))?) {
+        let request = APIRequest(endpoint: APIEndpoint.getWeather(locationId: locationId))
+        
+        _ = apiClient.data(request) { (response) in
+            switch response {
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    completion?(nil, error)
+                }
+            case .success(let data):
+                debugPrint(String(data: data, encoding: .utf8)!)
+                DispatchQueue.main.async {
+                    completion?(nil, nil)
+                }
+            }
+        }
+    }
+    
 }

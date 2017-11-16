@@ -7,13 +7,27 @@
         <attribute name="lon" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
         <attribute name="type" attributeType="String" syncable="YES"/>
+        <relationship name="weatherEntries" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Weather" inverseName="location" inverseEntity="Weather" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="locationId"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="Weather" representedClassName=".Weather" syncable="YES">
+        <attribute name="created" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="maxTemp" attributeType="Double" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="weatherId" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="weatherState" attributeType="String" syncable="YES"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="weatherEntries" inverseEntity="Location" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="weatherId"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <elements>
-        <element name="Location" positionX="-8802" positionY="-1332" width="128" height="135"/>
+        <element name="Location" positionX="-8802" positionY="-1332" width="128" height="150"/>
+        <element name="Weather" positionX="-8802" positionY="-1287" width="128" height="120"/>
     </elements>
 </model>

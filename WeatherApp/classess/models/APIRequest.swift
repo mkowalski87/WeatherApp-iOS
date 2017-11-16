@@ -20,12 +20,15 @@ public protocol Endpoint {
 
 enum APIEndpoint: Endpoint {
     case searchLocation(query: String)
+    case getWeather(locationId: Int32)
 }
 
 extension APIEndpoint {
     var method: HTTPMethod {
         switch self {
         case .searchLocation:
+            return .GET
+        case .getWeather:
             return .GET
         }
     }
@@ -34,6 +37,8 @@ extension APIEndpoint {
         switch self {
         case .searchLocation:
             return "location/search"
+        case .getWeather(let locationId):
+            return "location/\(locationId)"
         }
     }
     
@@ -41,6 +46,8 @@ extension APIEndpoint {
         switch self {
         case .searchLocation(let query):
             return ["query": query]
+        case .getWeather:
+            return nil
         }
     }
     

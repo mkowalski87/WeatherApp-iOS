@@ -21,12 +21,18 @@
 		9008E7981FBB6AEC00884554 /* FavouritesViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9008E7971FBB6AEC00884554 /* FavouritesViewModelProtocol.swift */; };
 		9008E79A1FBB6BD500884554 /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9008E7991FBB6BD500884554 /* FavouritesViewModel.swift */; };
 		9008E7A51FBB720C00884554 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9008E7A31FBB720C00884554 /* Location.swift */; };
-		9008E7A61FBB720C00884554 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9008E7A41FBB720C00884554 /* Location+CoreDataProperties.swift */; };
 		9008E7A81FBB73D400884554 /* LocationDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9008E7A71FBB73D400884554 /* LocationDAOProtocol.swift */; };
 		9008E7AA1FBB743500884554 /* LocationDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9008E7A91FBB743500884554 /* LocationDAO.swift */; };
 		9008E7AC1FBB75D600884554 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9008E7AB1FBB75D600884554 /* CoreDataHelper.swift */; };
 		9008E7AE1FBB7C1200884554 /* LocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9008E7AD1FBB7C1100884554 /* LocationTests.swift */; };
 		9008E7B01FBB86B600884554 /* LocationDAOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9008E7AF1FBB86B600884554 /* LocationDAOTests.swift */; };
+		906BC8AA1FBE109C00C823C6 /* WeatherDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BC8A91FBE109C00C823C6 /* WeatherDTO.swift */; };
+		906BC8AC1FBE10B600C823C6 /* LocationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BC8AB1FBE10B600C823C6 /* LocationDTO.swift */; };
+		906BC8B31FBE134A00C823C6 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BC8AF1FBE134A00C823C6 /* Weather.swift */; };
+		906BC8B41FBE134A00C823C6 /* Weather+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BC8B01FBE134A00C823C6 /* Weather+CoreDataProperties.swift */; };
+		906BC8B81FBE13A900C823C6 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BC8B61FBE13A900C823C6 /* Location+CoreDataProperties.swift */; };
+		906BC8BA1FBE15AE00C823C6 /* SearchLocationViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BC8B91FBE15AE00C823C6 /* SearchLocationViewModelProtocol.swift */; };
+		906BC8BC1FBE15E000C823C6 /* SearchLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BC8BB1FBE15E000C823C6 /* SearchLocationViewModel.swift */; };
 		908B69E01FBCCB6D002E98A7 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908B69DF1FBCCB6D002E98A7 /* APIClient.swift */; };
 		908B69E21FBCCCC2002E98A7 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908B69E11FBCCCC2002E98A7 /* APIRequest.swift */; };
 		908B69E41FBCD02C002E98A7 /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908B69E31FBCD02C002E98A7 /* NetworkingTests.swift */; };
@@ -67,12 +73,18 @@
 		9008E7971FBB6AEC00884554 /* FavouritesViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModelProtocol.swift; sourceTree = "<group>"; };
 		9008E7991FBB6BD500884554 /* FavouritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
 		9008E7A31FBB720C00884554 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		9008E7A41FBB720C00884554 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9008E7A71FBB73D400884554 /* LocationDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDAOProtocol.swift; sourceTree = "<group>"; };
 		9008E7A91FBB743500884554 /* LocationDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDAO.swift; sourceTree = "<group>"; };
 		9008E7AB1FBB75D600884554 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		9008E7AD1FBB7C1100884554 /* LocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTests.swift; sourceTree = "<group>"; };
 		9008E7AF1FBB86B600884554 /* LocationDAOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDAOTests.swift; sourceTree = "<group>"; };
+		906BC8A91FBE109C00C823C6 /* WeatherDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDTO.swift; sourceTree = "<group>"; };
+		906BC8AB1FBE10B600C823C6 /* LocationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDTO.swift; sourceTree = "<group>"; };
+		906BC8AF1FBE134A00C823C6 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		906BC8B01FBE134A00C823C6 /* Weather+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Weather+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		906BC8B61FBE13A900C823C6 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		906BC8B91FBE15AE00C823C6 /* SearchLocationViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewModelProtocol.swift; sourceTree = "<group>"; };
+		906BC8BB1FBE15E000C823C6 /* SearchLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewModel.swift; sourceTree = "<group>"; };
 		908B69DF1FBCCB6D002E98A7 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		908B69E11FBCCCC2002E98A7 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		908B69E31FBCD02C002E98A7 /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
@@ -166,6 +178,8 @@
 				9008E7991FBB6BD500884554 /* FavouritesViewModel.swift */,
 				908B69EB1FBCDD2D002E98A7 /* LocationListViewModelProtocol.swift */,
 				908B69ED1FBCDD68002E98A7 /* LocationListViewModel.swift */,
+				906BC8B91FBE15AE00C823C6 /* SearchLocationViewModelProtocol.swift */,
+				906BC8BB1FBE15E000C823C6 /* SearchLocationViewModel.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -173,9 +187,13 @@
 		9008E7871FBB5F0600884554 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				906BC8B61FBE13A900C823C6 /* Location+CoreDataProperties.swift */,
+				906BC8AF1FBE134A00C823C6 /* Weather.swift */,
+				906BC8B01FBE134A00C823C6 /* Weather+CoreDataProperties.swift */,
 				9008E7A31FBB720C00884554 /* Location.swift */,
+				906BC8AB1FBE10B600C823C6 /* LocationDTO.swift */,
+				906BC8A91FBE109C00C823C6 /* WeatherDTO.swift */,
 				9008E7AB1FBB75D600884554 /* CoreDataHelper.swift */,
-				9008E7A41FBB720C00884554 /* Location+CoreDataProperties.swift */,
 				9008E7A71FBB73D400884554 /* LocationDAOProtocol.swift */,
 				9008E7A91FBB743500884554 /* LocationDAO.swift */,
 				908B69DF1FBCCB6D002E98A7 /* APIClient.swift */,
@@ -317,16 +335,20 @@
 			files = (
 				9008E76B1FBB5DC400884554 /* WeatherApp.xcdatamodeld in Sources */,
 				9008E78F1FBB616D00884554 /* SearchLocationViewController.swift in Sources */,
-				9008E7A61FBB720C00884554 /* Location+CoreDataProperties.swift in Sources */,
+				906BC8AA1FBE109C00C823C6 /* WeatherDTO.swift in Sources */,
 				9008E7A81FBB73D400884554 /* LocationDAOProtocol.swift in Sources */,
+				906BC8B81FBE13A900C823C6 /* Location+CoreDataProperties.swift in Sources */,
 				9008E7AA1FBB743500884554 /* LocationDAO.swift in Sources */,
 				908B69EE1FBCDD68002E98A7 /* LocationListViewModel.swift in Sources */,
 				908B69E61FBCD2A1002E98A7 /* APIResponse.swift in Sources */,
 				9008E79A1FBB6BD500884554 /* FavouritesViewModel.swift in Sources */,
 				9008E7921FBB651900884554 /* CoordinatorProtocol.swift in Sources */,
 				9008E7631FBB5DC400884554 /* AppDelegate.swift in Sources */,
+				906BC8BA1FBE15AE00C823C6 /* SearchLocationViewModelProtocol.swift in Sources */,
 				908B69E01FBCCB6D002E98A7 /* APIClient.swift in Sources */,
+				906BC8AC1FBE10B600C823C6 /* LocationDTO.swift in Sources */,
 				9008E78D1FBB615400884554 /* FavouritesViewController.swift in Sources */,
+				906BC8BC1FBE15E000C823C6 /* SearchLocationViewModel.swift in Sources */,
 				908B69EA1FBCDB3F002E98A7 /* LocationListViewController.swift in Sources */,
 				9008E78B1FBB5F8400884554 /* MainViewController.swift in Sources */,
 				908B69E81FBCD5D2002E98A7 /* APIManager.swift in Sources */,
@@ -335,7 +357,9 @@
 				9008E7A51FBB720C00884554 /* Location.swift in Sources */,
 				908B69EC1FBCDD2D002E98A7 /* LocationListViewModelProtocol.swift in Sources */,
 				908B69E21FBCCCC2002E98A7 /* APIRequest.swift in Sources */,
+				906BC8B31FBE134A00C823C6 /* Weather.swift in Sources */,
 				9008E7941FBB656D00884554 /* AppCoordinator.swift in Sources */,
+				906BC8B41FBE134A00C823C6 /* Weather+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,20 +21,29 @@ class LocationDAO: LocationDAOProtocol {
         }
     }
     
-    func add(locationDTO: LocationDTO, context: NSManagedObjectContext) -> Location {
-        let location = Location(context: context)
-        location.locationId = locationDTO.woeid
-        location.copyValues(from: locationDTO)
-        return location
+    func add(location: LocationDTO, context: NSManagedObjectContext) -> Location {
+        let locationObj = Location(context: context)
+        locationObj.locationId = location.woeid
+        locationObj.copyValues(from: location)
+        try? context.save()
+        return locationObj
     }
     
     
-//    func addOrUpdate(locationDTO: LocationDTO, context: NSManagedObjectContext) {
-//        let request: NSFetchRequest<Location> = Location.fetchRequest()
-//        request.fetchLimit = 1
-//        request.predicate = NSPredicate(format: "locationId = %@", locationDTO.woeid)
-//        if let location = (try? request.execute())?.first {
-//
-//        }
-//    }
+    func addOrUpdate(locationDTO: LocationDTO, context: NSManagedObjectContext) {
+        let request: NSFetchRequest<Location> = Location.fetchRequest()
+        request.fetchLimit = 1
+        request.predicate = NSPredicate(format: "locationId == %d", locationDTO.woeid)
+        do {
+            if let location = try context.fetch(request).first {
+                location.copyValues(from: locationDTO)
+                try? context.save()
+            } else {
+                _ = add(location: locationDTO, context: context)
+            }
+        } catch let e {
+            debugPrint(e)
+        }
+
+    }
 }
