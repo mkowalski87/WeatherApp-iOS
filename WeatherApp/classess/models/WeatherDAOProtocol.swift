@@ -12,4 +12,5 @@ import CoreData
 protocol WeatherDAOProtocol {
     func add(weatherDTO: WeatherDTO, context: NSManagedObjectContext) -> Weather
     func addOrUpdate(weatherDTO: WeatherDTO, context: NSManagedObjectContext) -> [Weather]
+    func getLatestWeather(for location: Location, date: Date) -> Weather?
 }

@@ -20,7 +20,9 @@ extension Weather {
     @NSManaged public var weatherId: Int64
     @NSManaged public var weatherState: String?
     @NSManaged public var maxTemp: Double
-    @NSManaged public var created: NSDate?
+    @NSManaged public var created: Date
+    @NSManaged public var date: String
     @NSManaged public var location: Location?
+    @NSManaged public var icon: String
 
 }

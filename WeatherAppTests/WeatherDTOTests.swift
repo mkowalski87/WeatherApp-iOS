@@ -80,5 +80,6 @@ class WeatherDTOTests: XCTestCase {
         let parsedObject = GetWeatherResponse.parseObject(data: jsonData)
         XCTAssertNotNil(parsedObject)
         XCTAssertTrue(parsedObject?.consolidated_weather.count == 2)
+        XCTAssertNotNil(parsedObject?.consolidated_weather.first?.created)
     }
 }

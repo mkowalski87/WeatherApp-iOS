@@ -28,7 +28,7 @@ class SearchLocationViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(SearchLocationCell.self, forCellReuseIdentifier: "cell")
         view.backgroundColor = .green
     }
 
@@ -62,9 +62,11 @@ class SearchLocationViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? SearchLocationCell{
             if let model = viewModel?.get(index: indexPath.row) {
-                cell.textLabel?.text = "\(model.title) \(model.temp)"
+                cell.titleLabel.text = model.title
+                cell.iconImageView.image = model.icon
+                cell.tempLabel.text = model.temp
             }
             return cell
         }

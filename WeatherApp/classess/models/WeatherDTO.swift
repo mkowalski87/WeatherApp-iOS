@@ -29,6 +29,8 @@ import Foundation
 struct WeatherDTO: Codable, ParserProtocol {
     let id: Int64
     let weather_state_name: String
-    let created: String
+    let weather_state_abbr: String
+    let created: Date
     let max_temp: Double
+    let applicable_date: String
 }

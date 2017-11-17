@@ -16,6 +16,8 @@
     </entity>
     <entity name="Weather" representedClassName=".Weather" syncable="YES">
         <attribute name="created" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="date" attributeType="String" syncable="YES"/>
+        <attribute name="icon" attributeType="String" syncable="YES"/>
         <attribute name="maxTemp" attributeType="Double" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="weatherId" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="weatherState" attributeType="String" syncable="YES"/>
@@ -28,6 +30,6 @@
     </entity>
     <elements>
         <element name="Location" positionX="-8802" positionY="-1332" width="128" height="150"/>
-        <element name="Weather" positionX="-8802" positionY="-1287" width="128" height="120"/>
+        <element name="Weather" positionX="-8802" positionY="-1287" width="128" height="150"/>
     </elements>
 </model>

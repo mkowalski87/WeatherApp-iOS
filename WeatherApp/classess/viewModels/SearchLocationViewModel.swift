@@ -6,11 +6,12 @@
 //  Copyright © 2017 Michał Kowalski. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct SearchLocationModel {
     let title: String
     let temp: String
+    let icon: UIImage?
 }
 
 class SearchLocationViewModel: SearchLocationViewModelProtocol {
@@ -28,11 +29,13 @@ class SearchLocationViewModel: SearchLocationViewModelProtocol {
     func get(index: Int) -> SearchLocationModel {
         let loc = locations[index]
         var temp: String = "---"
-        if let weather = loc.weatherEntries?.anyObject() as? Weather {
-            temp = String(Int(weather.maxTemp))
+        var icon: UIImage?
+        if let weather = weatherDAO.getLatestWeather(for: loc, date: Date()) {
+            debugPrint("\(weather.created)")
+            temp = "\(Int(weather.maxTemp)) ℃"
+            icon = UIImage(named: weather.icon)
         }
-
-        return SearchLocationModel(title: loc.title, temp: temp)
+        return SearchLocationModel(title: loc.title, temp: temp, icon: icon)
     }
     
     func refresh() {
@@ -47,7 +50,10 @@ class SearchLocationViewModel: SearchLocationViewModelProtocol {
     
     func fetchWeather(for location: LocationDTO) {
         apiManager.getCurrentWeather(for: location.woeid) { (weatherList, error) -> (Void) in
-            self.saveWeatherList(locationId: location.woeid, weatherList: weatherList!)
+            guard let weatherList = weatherList else {
+                return
+            }
+            self.saveWeatherList(locationId: location.woeid, weatherList: weatherList)
             self.refresh()
         }
     }
