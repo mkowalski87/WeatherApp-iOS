@@ -8,15 +8,22 @@
 
 import Foundation
 
+protocol SearchLocationCoordinatorDelegate {
+    func close(sender: SearchLocationViewModelProtocol)
+}
+
 protocol SearchLocationViewDelegate {
     func update(sender: SearchLocationViewModelProtocol)
 }
 
 protocol SearchLocationViewModelProtocol {
     var viewDelegate: SearchLocationViewDelegate? { get set }
+    var coordinatorDelegate: SearchLocationCoordinatorDelegate? { get set }
+    
     var numberOfLocations: Int { get }
     func refresh()
     func addLocation(location: LocationDTO)
     func fetchWeather(for location: LocationDTO)
     func get(index: Int) -> SearchLocationModel
+    func close()
 }

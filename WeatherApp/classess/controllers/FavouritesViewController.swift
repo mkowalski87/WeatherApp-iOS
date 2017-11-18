@@ -10,11 +10,11 @@ import UIKit
 
 class FavouritesViewController: UIViewController {
 
+    var tableView = UITableView()
     var viewModel: FavouritesViewModelProtocol?
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        tabBarItem = UITabBarItem(title: "Favourites", image: nil, tag: 0)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -24,7 +24,50 @@ class FavouritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let addButton = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(addLocationButtonTouched(sender:)))
+        navigationItem.rightBarButtonItem = addButton
         view.backgroundColor = .yellow
+        tableView.register(SearchLocationCell.self, forCellReuseIdentifier: "cell")
     }
 
+    @objc func addLocationButtonTouched(sender: UIBarButtonItem) {
+        viewModel?.showSearchLocation()
+    }
+    
+    func setupUI() {
+        // configure tableView
+        tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableView)
+        tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+
+}
+
+extension FavouritesViewController: FavouritesViewDelegate {
+    func update(sender: FavouritesViewModelProtocol) {
+
+    }
+}
+
+extension  FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.numberOfPlaces ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? SearchLocationCell{
+            return cell
+        }
+        return UITableViewCell()
+    }
 }

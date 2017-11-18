@@ -28,16 +28,27 @@ final class AppCoordinator: CoordinatorProtocol {
     
     // MARK: - Public methods
     func showMainView() {
-        let navViewController = UINavigationController(rootViewController: showSearchLocation())
-        window.rootViewController = navViewController
+        window.rootViewController = showFavourites()
     }
 
-    func showSearchLocation() -> UIViewController {
+    func showSearchLocation() {
         let searchLocVC = SearchLocationViewController()
         let viewModel = SearchLocationViewModel()
         viewModel.viewDelegate = searchLocVC
+        viewModel.coordinatorDelegate = self
         searchLocVC.viewModel = viewModel
-        return searchLocVC
+        let navVC = UINavigationController(rootViewController: searchLocVC)
+        topViewController?.present(navVC, animated: true, completion: nil)
+    }
+    
+    func showFavourites() -> UIViewController {
+        let favLocVC = FavouritesViewController()
+        let viewModel = FavouritesViewModel()
+        viewModel.viewDelegate = favLocVC
+        viewModel.coordinatorDelegate =  self
+        favLocVC.viewModel = viewModel
+        let navVC = UINavigationController(rootViewController: favLocVC)
+        return navVC
     }
     
     func start() {
@@ -50,3 +61,14 @@ final class AppCoordinator: CoordinatorProtocol {
     
 }
 
+extension AppCoordinator: FavouritesCoordinatorDelegate {
+    func showSearchLocation(sender: FavouritesViewModelProtocol) {
+        showSearchLocation()
+    }
+}
+
+extension AppCoordinator: SearchLocationCoordinatorDelegate {
+    func close(sender: SearchLocationViewModelProtocol) {
+        topViewController?.navigationController?.dismiss(animated: true, completion: nil)
+    }
+}

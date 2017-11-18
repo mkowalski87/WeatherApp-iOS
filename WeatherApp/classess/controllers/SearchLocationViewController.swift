@@ -28,8 +28,12 @@ class SearchLocationViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        let closeButton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closeButtonTouched(sender:)))
+        navigationItem.leftBarButtonItem = closeButton
+        
         tableView.register(SearchLocationCell.self, forCellReuseIdentifier: "cell")
         view.backgroundColor = .green
+        viewModel?.refresh()
     }
 
     func setupUI() {
@@ -51,6 +55,10 @@ class SearchLocationViewController: UIViewController, UITableViewDelegate, UITab
         searchController.searchResultsUpdater = self
         tableView.tableHeaderView = searchController.searchBar
         definesPresentationContext = true
+    }
+    
+    @objc func closeButtonTouched(sender: UIBarButtonItem) {
+        viewModel?.close()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

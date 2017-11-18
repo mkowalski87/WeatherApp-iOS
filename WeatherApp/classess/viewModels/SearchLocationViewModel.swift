@@ -17,6 +17,8 @@ struct SearchLocationModel {
 class SearchLocationViewModel: SearchLocationViewModelProtocol {
     
     var viewDelegate: SearchLocationViewDelegate?
+    var coordinatorDelegate: SearchLocationCoordinatorDelegate?
+    
     var locationDAO: LocationDAOProtocol = LocationDAO()
     var weatherDAO: WeatherDAOProtocol = WeatherDAO()
     var apiManager: APIManager = APIManager()
@@ -46,6 +48,10 @@ class SearchLocationViewModel: SearchLocationViewModelProtocol {
     func addLocation(location: LocationDTO) {
         locationDAO.addOrUpdate(locationDTO: location, context: CoreDataHelper.instance.context)
         refresh()
+    }
+    
+    func close() {
+        coordinatorDelegate?.close(sender: self)
     }
     
     func fetchWeather(for location: LocationDTO) {

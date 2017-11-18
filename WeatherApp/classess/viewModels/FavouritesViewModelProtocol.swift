@@ -8,14 +8,19 @@
 
 import UIKit
 
-protocol FavouritesViewViewDelegate {
+protocol FavouritesCoordinatorDelegate {
+    func showSearchLocation(sender: FavouritesViewModelProtocol)
+}
+protocol FavouritesViewDelegate {
     func update(sender: FavouritesViewModelProtocol)
 }
 
 protocol FavouritesViewModelProtocol {
+    var viewDelegate: FavouritesViewDelegate? { get set }
+    var coordinatorDelegate: FavouritesCoordinatorDelegate? { get set }
     
     var numberOfPlaces: Int { get }
     
     func locationName(index: Int) -> String
-
+    func showSearchLocation()
 }

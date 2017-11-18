@@ -9,6 +9,8 @@
 import UIKit
 
 final class FavouritesViewModel: FavouritesViewModelProtocol {
+    var viewDelegate: FavouritesViewDelegate?
+    var coordinatorDelegate: FavouritesCoordinatorDelegate?
     
     private var locations: [Location] = []
     
@@ -20,5 +22,8 @@ final class FavouritesViewModel: FavouritesViewModelProtocol {
         return locations[index].title
     }
     
+    func showSearchLocation() {
+        coordinatorDelegate?.showSearchLocation(sender: self)
+    }
     
 }
