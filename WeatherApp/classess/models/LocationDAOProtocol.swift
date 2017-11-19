@@ -14,4 +14,6 @@ protocol LocationDAOProtocol {
     func add(location: LocationDTO, context: NSManagedObjectContext) -> Location
     func addOrUpdate(locationDTO: LocationDTO, context: NSManagedObjectContext)
     func all(context: NSManagedObjectContext) -> [Location]?
+    func getFavourited(context: NSManagedObjectContext) -> [Location]?
+    func editFavourite(location: Location, favourite: Bool)
 }

@@ -45,4 +45,20 @@ class LocationDAO: LocationDAOProtocol {
             _ = add(location: locationDTO, context: context)
         }
     }
+    
+    func editFavourite(location: Location, favourite: Bool) {
+        location.favourite = favourite
+        try? location.managedObjectContext?.save()
+    }
+    
+    func getFavourited(context: NSManagedObjectContext) -> [Location]? {
+        do {
+            let request: NSFetchRequest<Location> = Location.fetchRequest()
+            request.predicate = NSPredicate(format: "favourite == true")
+            return try context.fetch(request)
+        } catch let e {
+            debugPrint(e)
+            return nil
+        }
+    }
 }

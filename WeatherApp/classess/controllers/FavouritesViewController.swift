@@ -24,12 +24,19 @@ class FavouritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Favourites"
         let addButton = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(addLocationButtonTouched(sender:)))
         navigationItem.rightBarButtonItem = addButton
         view.backgroundColor = .yellow
+        setupUI()
         tableView.register(SearchLocationCell.self, forCellReuseIdentifier: "cell")
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel?.refresh()
+    }
+    
     @objc func addLocationButtonTouched(sender: UIBarButtonItem) {
         viewModel?.showSearchLocation()
     }
@@ -46,12 +53,11 @@ class FavouritesViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
-
 }
 
 extension FavouritesViewController: FavouritesViewDelegate {
     func update(sender: FavouritesViewModelProtocol) {
-
+        tableView.reloadData()
     }
 }
 
@@ -65,7 +71,10 @@ extension  FavouritesViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? SearchLocationCell{
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? SearchLocationCell,
+            let model = viewModel?.location(index: indexPath.row) {
+            cell.tempLabel.text = model.temp
+            cell.titleLabel.text = model.title
             return cell
         }
         return UITableViewCell()

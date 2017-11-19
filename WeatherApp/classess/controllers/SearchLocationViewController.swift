@@ -27,6 +27,7 @@ class SearchLocationViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Search location"
         setupUI()
         let closeButton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closeButtonTouched(sender:)))
         navigationItem.leftBarButtonItem = closeButton
@@ -67,6 +68,27 @@ class SearchLocationViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.numberOfLocations ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        guard let viewModel = viewModel else {
+            return nil
+        }
+        
+        let addToFavAction = UITableViewRowAction(style: .normal, title: "Add to favourite") { (action, indexPath) in
+            viewModel.addToFavourite(index: indexPath.row)
+        }
+        addToFavAction.backgroundColor = .green
+        
+        let removeFromFavAction = UITableViewRowAction(style: .destructive, title: "Remove favourite") { (action, indexPath) in
+            viewModel.removeFromFavourite(index: indexPath.row)
+        }
+        removeFromFavAction.backgroundColor = .blue
+        return viewModel.isFavourite(index: indexPath.row) ? [removeFromFavAction] : [addToFavAction]
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

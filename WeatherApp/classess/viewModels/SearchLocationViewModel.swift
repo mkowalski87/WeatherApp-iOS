@@ -50,6 +50,20 @@ class SearchLocationViewModel: SearchLocationViewModelProtocol {
         refresh()
     }
     
+    func isFavourite(index: Int) -> Bool {
+        return locations[index].favourite
+    }
+    
+    func addToFavourite(index: Int) {
+        locationDAO.editFavourite(location: locations[index], favourite: true)
+        viewDelegate?.update(sender: self)
+    }
+    
+    func removeFromFavourite(index: Int) {
+        locationDAO.editFavourite(location: locations[index], favourite: false)
+        viewDelegate?.update(sender: self)
+    }
+    
     func close() {
         coordinatorDelegate?.close(sender: self)
     }

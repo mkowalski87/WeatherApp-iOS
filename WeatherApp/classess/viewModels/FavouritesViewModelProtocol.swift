@@ -8,6 +8,12 @@
 
 import UIKit
 
+struct FavouritesModel {
+    let title: String
+    let temp: String
+    let icon: UIImage?
+}
+
 protocol FavouritesCoordinatorDelegate {
     func showSearchLocation(sender: FavouritesViewModelProtocol)
 }
@@ -20,7 +26,7 @@ protocol FavouritesViewModelProtocol {
     var coordinatorDelegate: FavouritesCoordinatorDelegate? { get set }
     
     var numberOfPlaces: Int { get }
-    
-    func locationName(index: Int) -> String
+    func location(index: Int) -> FavouritesModel
     func showSearchLocation()
+    func refresh()
 }

@@ -25,5 +25,8 @@ protocol SearchLocationViewModelProtocol {
     func addLocation(location: LocationDTO)
     func fetchWeather(for location: LocationDTO)
     func get(index: Int) -> SearchLocationModel
+    func isFavourite(index: Int) -> Bool
+    func addToFavourite(index: Int)
+    func removeFromFavourite(index: Int)
     func close()
 }
